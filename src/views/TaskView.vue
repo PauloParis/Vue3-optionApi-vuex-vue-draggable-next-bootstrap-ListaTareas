@@ -86,8 +86,10 @@ export default {
       localStorage.setItem("columHaciendo", JSON.stringify(this.haciendo));
       localStorage.setItem("columTerminada", JSON.stringify(this.terminada));
       this.tarea = this.tareas.find((item) => item.id == this.draggedItemIndex)
+      //console.log(this.tarea);
       if(this.tarea) {
         this.tarea.estado = this.endColumn
+        //console.log(this.tarea.estado);
         this.updateTareaBoard(this.tarea);
       }
       this.isDragging = false;

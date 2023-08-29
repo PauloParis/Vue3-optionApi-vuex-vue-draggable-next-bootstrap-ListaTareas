@@ -82,16 +82,3 @@ export default {
   },
 };
 </script>
-
-
-<style scoped>
-
-
-h6 {
-  color: #27566c; /* #27566c */ 
-  font-size: 1.5rem;
-}
-
-
-
-</style>

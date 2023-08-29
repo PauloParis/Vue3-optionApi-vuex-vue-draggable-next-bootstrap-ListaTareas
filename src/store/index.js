@@ -64,7 +64,6 @@ export default createStore({
         state.tarea = state.tareas.find((item) => item.id === payload);
     },
     update(state, payload) {
-        
         actualizar(payload)
         state.tareas = state.tareas.map((item) =>
             item.id === payload.id ? payload : item
@@ -72,6 +71,13 @@ export default createStore({
         localStorage.setItem("tareas", JSON.stringify(state.tareas));
         router.push("/");
     },
+    updateBoard(state, payload) {
+      actualizar(payload)
+      state.tareas = state.tareas.map((item) =>
+            item.id === payload.id ? payload : item
+        );
+        localStorage.setItem("tareas", JSON.stringify(state.tareas));
+    }
   },
   actions: {
         cargarLocalStorage({ commit }) {
@@ -84,21 +90,21 @@ export default createStore({
         localStorage.setItem("columPendiente", JSON.stringify([]));
         localStorage.setItem("columHaciendo", JSON.stringify([]));
         localStorage.setItem("columTerminada", JSON.stringify([]));
-    },
-    setTareas({ commit }, tarea) {
-        commit("set", tarea);
-    },
-    deleteTareas({ commit }, id) {
-        commit("eliminar", id);
-    },
-    setTarea({ commit }, id) {
-        commit("tarea", id);
-    },
-    updateTarea({ commit }, tarea) {
-        commit("update", tarea);
-    },
-    updateTareaBoard(tarea) {
-        actualizar(tarea)
-    },
+        },
+        setTareas({ commit }, tarea) {
+            commit("set", tarea);
+        },
+        deleteTareas({ commit }, id) {
+            commit("eliminar", id);
+        },
+        setTarea({ commit }, id) {
+            commit("tarea", id);
+        },
+        updateTarea({ commit }, tarea) {
+            commit("update", tarea);
+        },
+        updateTareaBoard({ commit }, tarea) {
+          commit("updateBoard", tarea);  
+        },
   },
 });
